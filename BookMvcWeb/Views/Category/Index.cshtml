@@ -6,6 +6,11 @@
     ViewData["Title"] = "Category View";
 }
 <div class="container">
+    <div class="row">
+        <div class="col-auto">
+            <partial name="_Notification" />
+        </div>
+    </div>
     <div class="row mt-3">
         <div class="col-6">
             <h2> Category List</h2>
@@ -15,10 +20,11 @@
         </div>
 
         <table class="table table-bordered table-striped mt-2">
-            <thead>
+            <thead class="text-white">
                 <tr>
                     <th> Category Name </th>
                     <th> Display Order </th>
+                    <th> Actions </th>
                 </tr>
             </thead>
             <tbody>
@@ -27,6 +33,10 @@
                     <tr>
                         <td> @category.Name </td>
                         <td> @category.DisplayOrder </td>
+                        <td>
+                            <a class="btn btn-primary" asp-action="EditCategory" asp-controller="Category" asp-route-Id="@category.Id"> <i class="fa-solid fa-pen-to-square"></i> &nbsp; Edit </a> &nbsp; &nbsp;
+                            <a class="btn btn-danger" asp-action="DeleteCategory" asp-controller="Category" asp-route-Id="@category.Id"> <i class="fa-solid fa-pen-to-square"></i> &nbsp; Delete </a>
+                        </td>
                     </tr>
                 }
             </tbody>
