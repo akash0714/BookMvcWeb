@@ -28,9 +28,10 @@ namespace BookRazorWeb.Pages.Categories
 
         public IActionResult OnPost()
         {
-            if (Category != null && ModelState.IsValid)
+            Category? dbCategory = _dbContext.Categories.Find(Category.Id);
+            if (dbCategory != null)
             {
-                _dbContext.Categories.Remove(Category);
+                _dbContext.Categories.Remove(dbCategory);
                 _dbContext.SaveChanges();
             }
             return RedirectToAction("Categories");
