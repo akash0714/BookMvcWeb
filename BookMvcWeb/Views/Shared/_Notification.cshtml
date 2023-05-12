@@ -1,0 +1,17 @@
+﻿
+@if (TempData["success"] != null)
+{
+    <script>
+        toastr.options.timeOut = 0;
+        toastr.options.extendedTimeOut = 0;
+        toastr.options.closeButton = true;
+        toastr.success('@TempData["success"]');
+    </script>
+}    
+
+@if (TempData["error"] != null)
+{
+    <script>
+        toastr.error('@TempData["error"]');
+    </script>
+}
