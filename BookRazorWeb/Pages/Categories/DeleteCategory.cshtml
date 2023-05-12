@@ -1,0 +1,28 @@
+﻿@page
+@model BookRazorWeb.Pages.Categories.DeleteCategoryModel
+
+
+<h2> Delete Category</h2>
+<form method="post" class="container border px-5 py-3">
+    @*<input type="hidden" asp-for="Id" />*@
+    <div class="row">
+        <label asp-for="Category.Name" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-6">
+            <input asp-for="Category.Name" class="form-control" readonly />
+        </div>
+    </div>
+    <div class="row mt-3">
+        <label asp-for="Category.DisplayOrder" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-6">
+            <input asp-for="Category.DisplayOrder" class="form-control" readonly/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2"> </div>
+        <div class="col-sm-3 mt-3">
+            <button type="submit" class="btn btn-primary me-2"> <i class="fa-regular fa-floppy-disk"></i> &nbsp; Save </button>
+            <a class="btn btn-secondary" asp-action="Index" asp-controller="Category"> <i class="fa-solid fa-xmark"></i> &nbsp; Cancel </a>
+        </div>
+    </div>
+</form>
+

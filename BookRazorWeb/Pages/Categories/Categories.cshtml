@@ -1,0 +1,36 @@
+﻿@page
+@model BookRazorWeb.Pages.Categories.CategoriesModel
+
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-6">
+            <h2> Category List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a class="btn btn-primary" asp-page="AddCategory"> <i class="fa-solid fa-square-plus mr-1"></i> &nbsp; Add Category </a>
+        </div>
+
+        <table class="table table-bordered table-striped mt-2">
+            <thead class="text-white">
+                <tr>
+                    <th> Category Name </th>
+                    <th> Display Order </th>
+                    <th> Actions </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var category in Model.Categories)
+                {
+                    <tr>
+                        <td> @category.Name </td>
+                        <td> @category.DisplayOrder </td>
+                        <td>
+                            <a class="btn btn-primary" asp-page="EditCategory" asp-route-Id="@category.Id"> <i class="fa-solid fa-pen-to-square"></i> &nbsp; Edit </a> &nbsp; &nbsp;
+                            <a class="btn btn-danger" asp-page="DeleteCategory" asp-route-Id="@category.Id"> <i class="fa-solid fa-pen-to-square"></i> &nbsp; Delete </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
