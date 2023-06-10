@@ -3,20 +3,17 @@
 <h2> Delete Category</h2>
 <form method="post" class="container border px-5 py-3">
     <input type="hidden" asp-for="Id" />
-    <div class="row">
-        <label asp-for="Name" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-6">
-            <input asp-for="Name" class="form-control" placeholder="Cartoon, Novel, SciFi.." />
-        </div>
+    <div class="mt-1 form-floating">
+            <input asp-for="Name" class="form-control" disabled="disabled" placeholder="Cartoon, Novel, SciFi.." />
+            <label class="text-dark" asp-for="Name"></label>
+            <span asp-validation-for="Name" class="text-danger"></span>
     </div>
-    <div class="row mt-3">
-        <label asp-for="DisplayOrder" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-6">
-            <input asp-for="DisplayOrder" max="999" class="form-control" placeholder="0-999" />
-        </div>
+    <div class="mt-3 form-floating">
+        <input asp-for="DisplayOrder" class="form-control" disabled="disabled" />
+        <label class="text-dark" asp-for="DisplayOrder"></label>
+        <span asp-validation-for="DisplayOrder" class="text-danger"></span>
     </div>
-    <div class="row">
-        <div class="col-sm-2"> </div>
+    <div class="mt-1">
         <div class="col-sm-3 mt-3">
             <button type="submit" class="btn btn-danger me-2"> <i class="fa-solid fa-trash"></i> &nbsp; Delete </button>
             <a class="btn btn-secondary" asp-action="Index" asp-controller="Category"> <i class="fa-solid fa-xmark"></i> &nbsp; Cancel </a>
