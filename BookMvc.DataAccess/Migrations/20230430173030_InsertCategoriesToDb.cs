@@ -4,7 +4,7 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace BookMvcWeb.Migrations
+namespace BookMvc.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class InsertCategoriesToDb : Migration

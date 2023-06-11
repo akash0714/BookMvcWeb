@@ -1,8 +1,8 @@
-﻿using BookMvcWeb.Models;
+﻿using BookMvc.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace BookMvcWeb.Controllers;
+namespace BookMvc.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;

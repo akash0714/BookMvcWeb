@@ -15,4 +15,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BookMvc.DataAccess\BookMvc.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>
