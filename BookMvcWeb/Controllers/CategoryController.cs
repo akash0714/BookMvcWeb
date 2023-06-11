@@ -1,4 +1,5 @@
-﻿using BookMvc.Models;
+﻿using BookMvc.DataAccess.Repositories.Interfaces;
+using BookMvc.Models;
 using BookMVC.DataAccess.Data;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,16 +7,16 @@ namespace BookMvc.Controllers;
 
 public class CategoryController : Controller
 {
-    private ApplicationDbContext _dbContext;
-    public CategoryController(ApplicationDbContext dbContext)
+    private readonly ICategoryRepository _categoryRepository;
+    public CategoryController(ICategoryRepository categoryRepository)
     {
-        _dbContext = dbContext;
+        _categoryRepository = categoryRepository;
     }
 
     public IActionResult Index()
     {
-        List<Category> categories = _dbContext.Categories.OrderBy(cat => cat.DisplayOrder).ToList();
-        return View(categories.ToList());
+        List<Category> categories = _categoryRepository.GetAll().OrderBy(cat => cat.DisplayOrder).ToList();
+        return View(categories);
     }
 
     [HttpGet]
@@ -34,8 +35,8 @@ public class CategoryController : Controller
                 ModelState.AddModelError("name", "Display name invalid.");
                 return View(category);
             }
-            _dbContext.Categories.Add(category);
-            _dbContext.SaveChanges();
+            _categoryRepository.Add(category);
+            _categoryRepository.SaveChanges();
             TempData["success"] = "Category added successfully.";
         }
         else 
@@ -52,7 +53,7 @@ public class CategoryController : Controller
         {
             return NotFound(); 
         }
-        var category = _dbContext.Categories.Find(Id);
+        var category = _categoryRepository.Get(category => category.Id == Id);
         if (category == null)
         {
             return NotFound();
@@ -65,8 +66,8 @@ public class CategoryController : Controller
     {
         if (ModelState.IsValid && category.Id > 0)
         {
-            _dbContext.Categories.Update(category);
-            _dbContext.SaveChanges();
+            _categoryRepository.Update(category);
+            _categoryRepository.SaveChanges();
             TempData["success"] = "Category updated successfully.";
         }
         else
@@ -83,7 +84,7 @@ public class CategoryController : Controller
         {
             return NotFound();
         }
-        var category = _dbContext.Categories.Find(Id);
+        var category = _categoryRepository.Get(category => category.Id == Id);
         if (category == null)
         {
             return NotFound();
@@ -98,15 +99,15 @@ public class CategoryController : Controller
         {
             return NotFound();
         }
-        Category? category = _dbContext.Categories.Find(Id);
+        Category? category = _categoryRepository.Get(category => category.Id == Id);
         if (category == null)
         {
             return NotFound();
         }
         else
         {
-            _dbContext.Categories.Remove(category);
-            _dbContext.SaveChanges();
+            _categoryRepository.Remove(category);
+            _categoryRepository.SaveChanges();
             TempData["success"] = "Category deleted successfully.";
         }
         return RedirectToAction("Index");
