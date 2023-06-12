@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Product List";
+}
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-6">
+            <h2> Product List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a class="btn btn-primary" asp-controller="Product" asp-action="AddProduct"> <i class="fa-solid fa-square-plus mr-1"></i> &nbsp; Add Product </a>
+        </div>
+
+        <table class="table table-bordered table-striped mt-2">
+            <thead class="text-white">
+                <tr>
+                    <th> Title </th>
+                    <th> Author </th>
+                    <th> Category </th>
+                    <th> Unit Price </th>
+                    <th> Price for 1-50</th>
+                    <th> Price for 51-100</th>
+                    <th> Actions </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td> @product.Title </td>
+                        <td> @product.Author </td>
+                        <td> @product.CategoryId </td>
+                        <td> @product.UnitPrice </td>
+                        <td> @product.Price50 </td>
+                        <td> @product.Price100 </td>
+                        <td>
+                            <a class="btn btn-primary" asp-action="EditProduct" asp-controller="Product" asp-route-id="@product.Id"> <i class="fa-solid fa-pen-to-square"></i> &nbsp; Edit </a> &nbsp; &nbsp;
+                            <a class="btn btn-danger" asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@product.Id"> <i class="fa-solid fa-pen-to-square"></i> &nbsp; Delete </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

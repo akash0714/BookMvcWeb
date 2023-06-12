@@ -1,8 +1,11 @@
 ﻿using BookMvc.Models;
+using BookMVC.Utility;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace BookMvc.Controllers;
+namespace BookMvcWeb.Areas.Customer.Controllers;
+
+[Area(ConstantUtility.CustomerArea)]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;

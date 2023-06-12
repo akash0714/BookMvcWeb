@@ -1,0 +1,66 @@
+﻿@model Product
+
+<h2> Edit Category</h2>
+<form method="post" class="container border px-5 py-3">
+    <div class="row">
+        <div class="col-sm-7">
+            <div asp-validation-summary="ModelOnly"></div>
+        </div>
+    </div>
+    <div class="mt-1">
+        <div class="form-floating">
+            <input asp-for="Title" class="form-control" />
+            <label class="text-dark" asp-for="Title"></label>
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="mt-1">
+        <div class="form-floating">
+            <input asp-for="Author" class="form-control" />
+            <label class="text-dark" asp-for="Author"></label>
+            <span asp-validation-for="Author" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="mt-1">
+        <div class="form-floating">
+            <select asp-for="CategoryId" asp-items="ViewBag.CategoryList" class="form-select">
+                <option selected value="0"> - Select Category - </option>
+            </select>
+            <label class="text-dark" asp-for="CategoryId"></label>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="mt-1">
+        <div class="form-floating">
+            <input asp-for="UnitPrice" class="form-control" />
+            <label class="text-dark" asp-for="UnitPrice"></label>
+            <span asp-validation-for="UnitPrice" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="mt-1">
+        <div class="form-floating">
+            <input asp-for="Price50" class="form-control" />
+            <label class="text-dark" asp-for="Price50"></label>
+            <span asp-validation-for="Price50" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="mt-1">
+        <div class="form-floating">
+            <input asp-for="Price100" class="form-control" />
+            <label class="text-dark" asp-for="Price100"></label>
+            <span asp-validation-for="Price100" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 mt-3">
+            <button type="submit" class="btn btn-primary me-2"> <i class="fa-regular fa-floppy-disk"></i> &nbsp; Save </button>
+            <a class="btn btn-secondary" asp-action="Index" asp-controller="Product"> <i class="fa-solid fa-xmark"></i> &nbsp; Cancel </a>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

@@ -13,10 +13,20 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0-preview.4.23261.6" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BookMvc.DataAccess\BookMvc.DataAccess.csproj" />
+    <ProjectReference Include="..\BookMVC.Utility\BookMVC.Utility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\blah\Controllers\" />
+    <Folder Include="Areas\blah\Data\" />
+    <Folder Include="Areas\blah\Models\" />
+    <Folder Include="Areas\blah\Views\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

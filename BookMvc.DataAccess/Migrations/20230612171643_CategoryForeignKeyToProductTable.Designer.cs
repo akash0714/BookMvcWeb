@@ -3,6 +3,7 @@ using BookMVC.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookMvc.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230612171643_CategoryForeignKeyToProductTable")]
+    partial class CategoryForeignKeyToProductTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,10 +79,6 @@ namespace BookMvc.DataAccess.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<double>("Price100")
                         .HasColumnType("float");
 
@@ -105,7 +104,6 @@ namespace BookMvc.DataAccess.Migrations
                             Id = 1,
                             Author = "Golwyn Mayor",
                             CategoryId = 1,
-                            ImageUrl = "",
                             Price100 = 75.0,
                             Price50 = 85.0,
                             Title = "Tom & Jerry",
@@ -116,7 +114,6 @@ namespace BookMvc.DataAccess.Migrations
                             Id = 2,
                             Author = "20th Century Fox",
                             CategoryId = 3,
-                            ImageUrl = "",
                             Price100 = 95.0,
                             Price50 = 110.0,
                             Title = "Passengers",
@@ -127,7 +124,6 @@ namespace BookMvc.DataAccess.Migrations
                             Id = 3,
                             Author = "Unknown",
                             CategoryId = 2,
-                            ImageUrl = "",
                             Price100 = 98.0,
                             Price50 = 110.0,
                             Title = "Game Of Thrones",

@@ -4,6 +4,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" asp-append-version="true" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
+        toastr.options = {
+            timeOut: 15000,
+            extendedTimeOut: 25000,
+            closeButton: true
+        };
         toastr.success("@TempData["success"]");
     </script>
 }    

@@ -1,10 +1,12 @@
 ﻿using BookMvc.DataAccess.Repositories.Interfaces;
 using BookMvc.Models;
 using BookMVC.DataAccess.Data;
+using BookMVC.Utility;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookMvc.Controllers;
+namespace BookMvcWeb.Areas.Administrator.Controllers;
 
+[Area(ConstantUtility.AdminArea)]
 public class CategoryController : Controller
 {
     private readonly ICategoryRepository _categoryRepository;
@@ -39,19 +41,19 @@ public class CategoryController : Controller
             _categoryRepository.SaveChanges();
             TempData["success"] = "Category added successfully.";
         }
-        else 
+        else
         {
-            return View(category); 
+            return View(category);
         }
         return RedirectToAction("Index", "Category");
     }
 
     [HttpGet]
-    public IActionResult EditCategory(int? Id) 
+    public IActionResult EditCategory(int? Id)
     {
         if (Id == null || Id <= 0)
         {
-            return NotFound(); 
+            return NotFound();
         }
         var category = _categoryRepository.Get(category => category.Id == Id);
         if (category == null)
